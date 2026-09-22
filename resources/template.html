@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Apple Keynote Promo Template</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1920px; height:1080px; overflow:hidden;
+    font-family:"SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter",
+                "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    color:#1d1d1f; -webkit-font-smoothing:antialiased; }
+  #stage { position:relative; width:1920px; height:1080px;
+    background: radial-gradient(ellipse at 50% 40%, #ffffff 0%, #f5f5f7 60%, #e8e8ed 100%); }
+  .layer { position:absolute; inset:0; will-change:opacity;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; }
+
+  /* ========== 字体层级 ========== */
+  .hero { font-size:150px; font-weight:600; letter-spacing:-0.03em; line-height:1.1; }
+  .hero.thin { font-weight:300; }
+  .hero.blue { color:#0071e3; }
+  .hero-rainbow {
+    background: linear-gradient(90deg,#ff2d55,#ff9500,#ffcc00,#34c759,#0a84ff,#af52de);
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  /* ========== 终端窗口 ========== */
+  .term { width:1000px; background:#1d1d1f; border-radius:20px; overflow:hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,.25), 0 0 0 1px rgba(0,0,0,.06); }
+  .term .bar { height:48px; background:#2d2d30; display:flex; align-items:center;
+    padding:0 24px; gap:10px; }
+  .term .bar i { width:14px; height:14px; border-radius:50%; display:block; }
+  .term .bar i:nth-child(1){ background:#ff5f57; }
+  .term .bar i:nth-child(2){ background:#febc2e; }
+  .term .bar i:nth-child(3){ background:#28c840; }
+  .term .bar span { margin-left:auto; font-size:22px; color:#86868b;
+    font-family:"SF Mono", ui-monospace, Menlo, monospace; }
+  .term .body { padding:44px 48px; font-family:"SF Mono", ui-monospace, Menlo, monospace;
+    font-size:28px; line-height:1.8; color:#f5f5f7; text-align:left; }
+  .term .body .p { color:#0a84ff; }
+  .term .body .g { color:#30d158; }
+  .term .body .c { color:#86868b; }
+
+  /* ========== 产品卡片 ========== */
+  .card { border-radius:20px; overflow:hidden; background:#fff;
+    box-shadow: 0 20px 60px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.04); }
+  .card img { display:block; width:100%; }
+
+  /* ========== 流程节点 ========== */
+  .flow { display:flex; gap:40px; align-items:center; justify-content:center; }
+  .flow .node { width:200px; height:200px; border-radius:50%;
+    background:#fff; box-shadow: 0 20px 60px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.04);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-weight:600; font-size:38px; color:#1d1d1f; }
+  .flow .node small { font-size:18px; font-weight:300; color:#86868b; margin-top:6px; }
+  .flow .node.blue { background:#0071e3; color:#fff; }
+  .flow .node.blue small { color:rgba(255,255,255,.7); }
+  .flow .arrow { font-size:48px; color:#0071e3; font-weight:300; }
+
+  /* ========== 步骤卡片 ========== */
+  .steps { display:flex; gap:24px; }
+  .steps .step { width:280px; padding:36px 28px; border-radius:20px; background:#fff;
+    box-shadow: 0 20px 60px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.04);
+    text-align:left; }
+  .steps .step .num { font-size:24px; font-weight:600; color:#0071e3; margin-bottom:12px; }
+  .steps .step .name { font-size:30px; font-weight:600; margin-bottom:8px; }
+  .steps .step .desc { font-size:20px; color:#86868b; line-height:1.5; }
+
+  /* ========== 网格 ========== */
+  .grid { display:grid; gap:16px; }
+  .grid .item { padding:24px 12px; border-radius:14px; background:#fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.04);
+    font-size:22px; font-weight:500; text-align:center; }
+
+  /* ========== 底部字幕 ========== */
+  .lyric { position:absolute; left:0; right:0; bottom:130px; text-align:center;
+    font-size:60px; font-weight:300; letter-spacing:-0.015em; color:#1d1d1f; opacity:0; }
+  .lyric b { font-weight:600; }
+  .lyric.blue { color:#0071e3; }
+
+  /* ========== 品牌角标 ========== */
+  .brand { position:absolute; top:60px; left:0; right:0; text-align:center;
+    font-size:28px; color:#86868b; letter-spacing:0.35em; font-weight:500; opacity:0; }
+  .foot { position:absolute; bottom:60px; left:0; right:0; text-align:center;
+    font-size:26px; color:#86868b; opacity:0; }
+  .foot b { color:#1d1d1f; font-weight:600; }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- ========== 8 个分镜，每镜 4s ========== -->
+
+  <!-- S1: 开场金句 (0-4s) -->
+  <div class="layer" id="s1">
+    <div class="hero thin">Your tagline<br><span class="hero blue">goes here.</span></div>
+  </div>
+  <div class="lyric" id="l1">subtext <b>goes here</b>.</div>
+
+  <!-- S2: 产品特写 (4-8s) -->
+  <div class="layer" id="s2">
+    <!-- 换成你的产品截图 / 终端窗口 / UI 卡片 -->
+    <div class="card" style="width:900px;">
+      <div style="padding:80px; font-size:48px; color:#86868b; text-align:center;">
+        Your Product Screenshot
+      </div>
+    </div>
+  </div>
+  <div class="lyric" id="l2">one sentence. <b>one product.</b></div>
+
+  <!-- S3: 核心流程 (8-12s) -->
+  <div class="layer" id="s3">
+    <div class="flow">
+      <div class="node">Step1<small>sub</small></div>
+      <div class="arrow">→</div>
+      <div class="node">Step2<small>sub</small></div>
+      <div class="arrow">→</div>
+      <div class="node blue">Step3<small>sub</small></div>
+      <div class="arrow">→</div>
+      <div class="node">Step4<small>sub</small></div>
+    </div>
+  </div>
+  <div class="lyric" id="l3">your <b>core loop</b> explained.</div>
+
+  <!-- S4: 步骤卡片 (12-16s) -->
+  <div class="layer" id="s4">
+    <div class="steps">
+      <div class="step"><div class="num">01</div><div class="name">Step One</div><div class="desc">description here.</div></div>
+      <div class="step"><div class="num">02</div><div class="name">Step Two</div><div class="desc">description here.</div></div>
+      <div class="step"><div class="num">03</div><div class="name">Step Three</div><div class="desc">description here.</div></div>
+      <div class="step"><div class="num">04</div><div class="name">Step Four</div><div class="desc">description here.</div></div>
+      <div class="step"><div class="num">05</div><div class="name">Step Five</div><div class="desc">description here.</div></div>
+    </div>
+  </div>
+  <div class="lyric" id="l4">five steps. <b>twelve lines.</b></div>
+
+  <!-- S5: 生态/兼容性 (16-20s) -->
+  <div class="layer" id="s5">
+    <div class="grid" style="grid-template-columns:repeat(6,1fr); width:1400px;">
+      <div class="item">Platform 1</div>
+      <div class="item">Platform 2</div>
+      <div class="item">Platform 3</div>
+      <div class="item">Platform 4</div>
+      <div class="item">Platform 5</div>
+      <div class="item">Platform 6</div>
+    </div>
+  </div>
+  <div class="lyric" id="l5">works with <b>everything you use.</b></div>
+
+  <!-- S6: 原则/态度 (20-24s) -->
+  <div class="layer" id="s6">
+    <div class="hero thin">Your principle.<br><span class="hero blue">Your attitude.</span></div>
+  </div>
+  <div class="lyric" id="l6">your <b>philosophy</b>.</div>
+
+  <!-- S7: 品牌 logo (24-28s) -->
+  <div class="layer" id="s7">
+    <div class="hero hero-rainbow" style="font-size:200px;">yourbrand.</div>
+  </div>
+  <div class="lyric" id="l7">your tagline <b>again.</b></div>
+
+  <!-- S8: 收尾 (28-36s) -->
+  <div class="layer" id="s8">
+    <div class="hero" style="font-size:100px;">github.com/<span class="hero blue">youruser</span>/yourrepo</div>
+  </div>
+
+  <div class="brand" id="brand">YOUR BRAND</div>
+  <div class="foot">tagline <b>goes here</b></div>
+</div>
+
+<script>
+  // ========== 时间线驱动 ==========
+  var DUR = 36; // 总时长（秒）
+  var SC = [
+    [0,  4], [4,  8], [8,  12], [12, 16],
+    [16, 20], [20, 24], [24, 28], [28, 36]
+  ];
+
+  function seg(t,a,b){ return Math.max(0, Math.min(1, (t-a)/(b-a))); }
+  function eo(x){ return x >= 1 ? 1 : 1 - Math.pow(2, -10*x); } // Apple expo-out
+  function $(s){ return s.charAt(0)==='#' ? document.querySelector(s) : document.getElementById(s); }
+
+  function layer(el, t, a, b){
+    var pin = eo(seg(t, a, a+0.4));
+    var pout = 1 - eo(seg(t, b-0.4, b));
+    el.style.opacity = (pin*pout).toFixed(4);
+    el.style.transform = 'scale(' + (0.985 + pin*0.015).toFixed(4) + ')';
+  }
+  function lyric(el, t, a, b){
+    var pin = eo(seg(t, a+0.3, a+0.9));
+    var pout = 1 - eo(seg(t, b-0.5, b));
+    el.style.opacity = (pin*pout).toFixed(4);
+    el.style.transform = 'translateY(' + ((1-pin)*20) + 'px)';
+  }
+
+  function render(t){
+    var bf = eo(seg(t, 1, 2)) * (1 - eo(seg(t, DUR-2, DUR)));
+    $('brand').style.opacity = bf.toFixed(3);
+    $('foot').style.opacity = bf.toFixed(3);
+    for (var i = 0; i < 8; i++){
+      var [a, b] = SC[i];
+      layer($('s' + (i+1)), t, a, b);
+      if (i < 7) lyric($('l' + (i+1)), t, a, b);
+    }
+  }
+
+  window.setTime = render;
+  window.__DUR = DUR;
+  render(0);
+</script>
+</body>
+</html>
