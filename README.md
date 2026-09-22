@@ -24,6 +24,41 @@
 
 这个 Skill 把这些坑全部列出来，让 AI 一次做对。
 
+## 安装
+
+### Windows（PowerShell 原生，无 bash 依赖）
+
+```powershell
+# 一行安装（推荐）
+git clone https://github.com/lilyco-42/apple-keynote-skill.git $env:USERPROFILE\.agents\skills\apple-keynote
+
+# 装到所有 agent（需 node/npm）
+git clone https://github.com/lilyco-42/apple-keynote-skill.git $env:USERPROFILE\.agents\skills\apple-keynote ; npx skills@latest add lilyco-42/apple-keynote-skill
+```
+
+### Linux / macOS（bash）
+
+```bash
+# 一键安装到全局技能目录
+git clone https://github.com/lilyco-42/apple-keynote-skill.git ~/.agents/skills/apple-keynote
+
+# 全支持模式：装到所有 agent（内部用 vercel-labs/skills CLI）
+npx skills@latest add lilyco-42/apple-keynote-skill
+```
+
+### 全支持原理
+
+- **Universal agents**（Codex / Gemini CLI / GitHub Copilot / OpenCode / Kimi / Amp / Replit）原生读取 `~/.agents/skills/`——装一次即全通
+- **其余 30+ agent**（Claude Code / Cursor / Windsurf / Qwen / Cline / Roo 等）由 `skills` CLI 从 canonical 源建 junction/symlink 打通
+- 更新技能只需改 `~/.agents/skills/apple-keynote` 一处，所有 agent 同步生效
+
+### 依赖
+
+- `git`（安装用）
+- `node` + `npm`（跑 puppeteer-core 截图用）
+- `ffmpeg`（合成 mp4 用）
+- 本机 Chrome（puppeteer-core 连接用）
+
 ## 快速开始
 
 ### 1. 读产品真实内容
